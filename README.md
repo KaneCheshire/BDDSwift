@@ -9,36 +9,44 @@ must include a When step, and must end with a Then step (or an And that follows 
 For example this is valid:
 
 ```swift
-Given(the: appIsInSomeState)
-When(I: performSomeAction)
-Then(the: appIsInADifferentState)
+Scenario("My amazing scenario") {
+    Given(the: appIsInSomeState)
+    When(I: performSomeAction)
+    Then(the: appIsInADifferentState)
+}
 ``` 
 
 And so is this:
 
 ```swift
-Given(the: appIsInSomeState)
-And(somethingElseIsSetUp)
-When(I: performSomeAction)
-And(I: performSomeOtherAction)
-Then(the: appIsInADifferentState)
-And(someOtherStateHasChanged)
+Scenario("My amazing scenario") {
+    Given(the: appIsInSomeState)
+    And(somethingElseIsSetUp)
+    When(I: performSomeAction)
+    And(I: performSomeOtherAction)
+    Then(the: appIsInADifferentState)
+    And(someOtherStateHasChanged)
+}
 ```
 
 But this isn't valid, and won't compile:
 
 ```swift
-When(the: appIsInSomeState)
-Given(I: performSomeAction)
-Then(the: appIsInADifferentState)
+Scenario("My amazing scenario") {
+    When(the: appIsInSomeState)
+    Given(I: performSomeAction)
+    Then(the: appIsInADifferentState)
+}
 ```
 
 And nor is this:
 
 ```swift
-Given(the: appIsInSomeState)
-And(I: performSomeAction)
-And(the: appIsInADifferentState)
+Scenario("My amazing scenario") {
+    Given(the: appIsInSomeState)
+    And(I: performSomeAction)
+    And(the: appIsInADifferentState)
+}
 ```
 
 Each step takes a function as an argument which is executed by the scenario in the correct order as the steps.
