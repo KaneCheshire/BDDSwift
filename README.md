@@ -1,9 +1,9 @@
 # BDDSwift
 
-BDDSwift is a type-safe, compiler-enforced implementation of the BDD Given/When/Then syntax for writing descriptive, 
+BDDSwift is a **type-safe**, **compiler-enforced** implementation of the BDD Given/When/Then syntax for writing descriptive, 
 human-readable XCTest tests.
 
-BDDSwift uses Swift resuiltBuilders to enforce the order of the steps in a scenario; a scenario must start with a Given step, 
+BDDSwift uses Swift `resuiltBuilder`s to **enforce the order of the steps in a scenario**; a scenario must start with a Given step, 
 must include a When step, and must end with a Then step (or an And that follows a Then step).
 
 For example this is valid:
@@ -152,7 +152,7 @@ functions that take parameters, all while still maintaining strong readability.
 I recommend passing a function by reference wherever you're using function that doesn't take arguments, this is the most readable way of
 writing steps, but BDDSwift still makes things readable for cases when you're calling a function that takes parameters by using _autoclosures_.
 
-> Fun fact: Autoclosures wrap your code in invisible curly braces, and it's how you can pass a function into the step initialiser without wrapping in `{ ... }`!
+** > ✨ FUN FACT: Autoclosures wrap your code in invisible curly braces, and it's how you can pass a function into the step initialiser without wrapping in `{ ... }`! **
 
 Additionally, you may notice that the initializer parameters give you the option of `the:`, `I:` etc. This means you can remove these words 
 from your individual function signatures, but it's up to you if you want prefer to add this to the function name yourself like so:
@@ -193,3 +193,5 @@ func test_happyPath() {
     }
 }
 ```
+
+** > ✨ FUN FACT: Xcode parallelises tests by test case, not test function. This means that it will launch multiple simulators and run a different test case on each one. If you have lots of individual test functions in a test case, Xcode won't be able to split them up and run them in parallel on test cases; to avoid this simply create one test function per test-case so that Xcode can run them in parallel. ** 
